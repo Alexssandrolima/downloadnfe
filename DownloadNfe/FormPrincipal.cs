@@ -21,11 +21,12 @@ namespace DownloadNfe
 
         private void btnManifesta_Click(object sender, EventArgs e)
         {
+            var UserCnpj = textBoxUserCnpj.Text;//  pegar os dados de uma textbox
             //
             //Ciencia da Operacao
             //
             var NFe_Rec = new NfeRecepcao.RecepcaoEventoSoapClient();
-            NFe_Rec.ClientCredentials.ClientCertificate.SetCertificate(StoreLocation.CurrentUser, StoreName.My, X509FindType.FindBySubjectName, "PENINSULA NORTE FERTILIZANTES S A:14267717000109");
+            NFe_Rec.ClientCredentials.ClientCertificate.SetCertificate(StoreLocation.CurrentUser, StoreName.My, X509FindType.FindBySubjectName, UserCnpj);
 
             var notas = new[]
             {
@@ -151,6 +152,11 @@ namespace DownloadNfe
             /*System.Diagnostics.Process.Start(fileReq);
             System.Diagnostics.Process.Start(fileResp);
              */
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
